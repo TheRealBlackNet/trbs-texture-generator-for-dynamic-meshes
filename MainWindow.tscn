@@ -1,0 +1,407 @@
+[gd_scene load_steps=18 format=3 uid="uid://h86ca16ffmin"]
+
+[ext_resource type="Texture2D" uid="uid://7rbvbvhlwe83" path="res://BG.png" id="1_7qsqj"]
+[ext_resource type="Texture2D" uid="uid://b315haidpww1b" path="res://BUTTON_D.png" id="1_e7h7s"]
+[ext_resource type="Texture2D" uid="uid://claqvqx34vny7" path="res://BUTTON_D_2.png" id="1_l4su8"]
+[ext_resource type="Texture2D" uid="uid://x7abdo7ovejo" path="res://BG_G.png" id="2_3ygwi"]
+[ext_resource type="Texture2D" uid="uid://b3uncqy6yk58o" path="res://BUTTON_N.png" id="2_e7h7s"]
+[ext_resource type="Texture2D" uid="uid://bt4o6qlse48ne" path="res://BUTTON_R.png" id="3_p4i4y"]
+[ext_resource type="Script" uid="uid://dtt6tltejd4wj" path="res://main_window.gd" id="5_p4i4y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4i4y"]
+texture = ExtResource("1_e7h7s")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4y1g4"]
+texture = ExtResource("1_l4su8")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_or8l5"]
+texture = ExtResource("1_l4su8")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_onhml"]
+texture = ExtResource("2_e7h7s")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nekg8"]
+texture = ExtResource("3_p4i4y")
+texture_margin_left = 17.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxw0b"]
+texture = ExtResource("3_p4i4y")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="Theme" id="Theme_7qsqj"]
+Button/styles/disabled = SubResource("StyleBoxTexture_p4i4y")
+Button/styles/focus = SubResource("StyleBoxTexture_4y1g4")
+Button/styles/hover = SubResource("StyleBoxTexture_or8l5")
+Button/styles/normal = SubResource("StyleBoxTexture_onhml")
+Button/styles/pressed = SubResource("StyleBoxTexture_nekg8")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_yxw0b")
+Label/font_sizes/font_size = 20
+
+[sub_resource type="Gradient" id="Gradient_p4i4y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p4i4y"]
+noise_type = 0
+seed = 7
+frequency = 0.5499
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4y1g4"]
+width = 25
+height = 25
+noise = SubResource("FastNoiseLite_p4i4y")
+color_ramp = SubResource("Gradient_p4i4y")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7qsqj")
+script = ExtResource("5_p4i4y")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+anchor_mode = 0
+ignore_rotation = false
+limit_enabled = false
+drag_left_margin = 1.0
+drag_top_margin = 1.0
+drag_right_margin = 1.0
+drag_bottom_margin = 1.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG1" type="MarginContainer" parent="MarginContainer3"]
+layout_mode = 2
+
+[node name="BG" type="NinePatchRect" parent="MarginContainer3/BG1"]
+layout_mode = 2
+texture = ExtResource("1_7qsqj")
+region_rect = Rect2(0, 0, 100, 100)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="UI1" type="MarginContainer" parent="MarginContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/UI1"]
+layout_mode = 2
+
+[node name="Options" type="PanelContainer" parent="MarginContainer3/UI1/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="OptionSorter" type="VBoxContainer" parent="MarginContainer3/UI1/HBoxContainer/Options"]
+layout_mode = 2
+
+[node name="lblName" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "- ColorSheet Generator -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblColorCounts" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+layout_mode = 2
+text = "Colors of Wheel 
+(+1 White\\Gray\\Black)"
+
+[node name="nudColors" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 255.0
+value = 7.0
+alignment = 1
+
+[node name="lblSteps" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+layout_mode = 2
+text = "Tones"
+
+[node name="nudTones" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 255.0
+value = 8.0
+alignment = 1
+
+[node name="lblOffset" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+layout_mode = 2
+text = "Offset in 0-360°"
+
+[node name="nudOffset" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 360.0
+alignment = 1
+
+[node name="lblSize" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+layout_mode = 2
+text = "Size in Pixel"
+
+[node name="nudSize" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 25.0
+max_value = 8000.0
+value = 100.0
+alignment = 1
+
+[node name="lblS" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+layout_mode = 2
+text = "S (HSV)"
+
+[node name="nudS" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.3
+alignment = 1
+
+[node name="lblLimitDark" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+layout_mode = 2
+text = "Dark limit"
+
+[node name="nudDarkLimit" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.15
+alignment = 1
+
+[node name="Noise" type="PanelContainer" parent="MarginContainer3/UI1/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3/UI1/HBoxContainer/Noise"]
+layout_mode = 2
+
+[node name="lblNoise" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "- Noise -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cbtnUseNoise" type="CheckButton" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "add Noise"
+
+[node name="lblSeed" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+layout_mode = 2
+text = "Seed"
+
+[node name="nudSeed" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 500000.0
+value = 1237.0
+allow_lesser = true
+alignment = 1
+
+[node name="lblPixel" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+layout_mode = 2
+text = "Pixel"
+
+[node name="nudSizeNoise" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 2.0
+max_value = 8000.0
+value = 25.0
+alignment = 1
+
+[node name="lblScale" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+layout_mode = 2
+text = "Freq"
+
+[node name="nudScale" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 500.0
+step = 0.01
+value = 0.75
+alignment = 1
+
+[node name="lblType" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+layout_mode = 2
+text = "Type"
+
+[node name="optTypes" type="OptionButton" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 1
+popup/item_0/id = 0
+
+[node name="lblRamp" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+layout_mode = 2
+text = "Ramp (min\\max)"
+
+[node name="nudMin" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 50.0
+alignment = 1
+
+[node name="nudMax" type="SpinBox" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+alignment = 1
+
+[node name="lblPrev" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+layout_mode = 2
+text = "Preview"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer"]
+layout_mode = 2
+
+[node name="imgNoise" type="TextureRect" parent="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/AspectRatioContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture = SubResource("NoiseTexture2D_4y1g4")
+stretch_mode = 4
+
+[node name="Output" type="PanelContainer" parent="MarginContainer3/UI1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OutSorter" type="VBoxContainer" parent="MarginContainer3/UI1/HBoxContainer/Output"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="lblOut" type="Label" parent="MarginContainer3/UI1/HBoxContainer/Output/OutSorter"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "- Output -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/UI1/HBoxContainer/Output/OutSorter"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer3/UI1/HBoxContainer/Output/OutSorter/MarginContainer"]
+layout_mode = 2
+alignment_vertical = 0
+
+[node name="BG" type="TextureRect" parent="MarginContainer3/UI1/HBoxContainer/Output/OutSorter/MarginContainer/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("2_3ygwi")
+stretch_mode = 1
+
+[node name="imgOutputPrev" type="TextureRect" parent="MarginContainer3/UI1/HBoxContainer/Output/OutSorter/MarginContainer/AspectRatioContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 2
+
+[node name="Buttons" type="HSplitContainer" parent="MarginContainer3/UI1/HBoxContainer/Output/OutSorter"]
+layout_mode = 2
+split_offset = 530
+dragging_enabled = false
+drag_area_highlight_in_editor = true
+
+[node name="btnSaveImage" type="Button" parent="MarginContainer3/UI1/HBoxContainer/Output/OutSorter/Buttons"]
+layout_mode = 2
+text = "- SAVE IMAGE -"
+
+[node name="btnSaveNoise" type="Button" parent="MarginContainer3/UI1/HBoxContainer/Output/OutSorter/Buttons"]
+layout_mode = 2
+text = "- SAVE NOISE -"
+
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+position = Vector2i(46, 81)
+size = Vector2i(1198, 680)
+theme_type_variation = &"none"
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.png")
+hidden_files_toggle_enabled = false
+file_filter_toggle_enabled = false
+file_sort_options_enabled = false
+folder_creation_enabled = false
+favorites_enabled = false
+recent_list_enabled = false
+layout_toggle_enabled = false
+
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudColors" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudColors" to="." method="_on_nud_value_changed"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudTones" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudTones" to="." method="_on_nud_value_changed"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudOffset" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudOffset" to="." method="_on_nud_value_changed"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudSize" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudSize" to="." method="_on_nud_value_changed"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudS" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudS" to="." method="_on_nud_value_changed"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudDarkLimit" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Options/OptionSorter/nudDarkLimit" to="." method="_on_nud_value_changed"]
+[connection signal="toggled" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/cbtnUseNoise" to="." method="_on_check_button_toggled"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudSeed" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudSeed" to="." method="_on_nud_value_changed"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudSizeNoise" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudSizeNoise" to="." method="_on_nud_value_changed"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudScale" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudScale" to="." method="_on_nud_value_changed"]
+[connection signal="item_selected" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/optTypes" to="." method="_on_opt_selected"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudMin" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudMin" to="." method="_on_nud_value_changed"]
+[connection signal="changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudMax" to="." method="_on_nud_changed"]
+[connection signal="value_changed" from="MarginContainer3/UI1/HBoxContainer/Noise/VBoxContainer/nudMax" to="." method="_on_nud_value_changed"]
+[connection signal="button_up" from="MarginContainer3/UI1/HBoxContainer/Output/OutSorter/Buttons/btnSaveImage" to="." method="_on_btn_save_image_button_up"]
+[connection signal="button_up" from="MarginContainer3/UI1/HBoxContainer/Output/OutSorter/Buttons/btnSaveNoise" to="." method="_on_btn_save_noise_button_up"]
+[connection signal="file_selected" from="SaveFileDialog" to="." method="_on_save_file_dialog_file_selected"]
